@@ -8,7 +8,17 @@ compatibility: Python 3.9+, Pillow, numpy, ffmpeg on PATH. Fonts Poppins + Lora/
 
 Turns a short script into a finished 1080×1920 mp4. You write a **storyboard JSON**; `scripts/render.py` draws every frame (wobbly ink lines, line-boil at 8 fps, fade/wipe/pop reveals) and encodes with ffmpeg.
 
-Read `references/style-guide.md` first for the visual rules (palette, proportions, layout, narrative pattern). `assets/example_storyboard.json` yalnızca **söz dizimi örneğidir** (3 sahne); yerleşimini şablon olarak kopyalama.
+`assets/example_storyboard.json` yalnızca **söz dizimi örneğidir** (3 sahne); yerleşimini veya karakter aksesuarlarını şablon olarak kopyalama.
+
+## Visual style defaults
+
+- Use a 9:16 canvas (1080×1920, 30 fps). Keep each scene to one idea, usually 2.5–4 seconds, with short captions inside platform-safe areas.
+- Use warm paper (`#f3ebdd`), dark ink (`#2b2723`), and semantic brick-red accent (`#b8372d`). Sun gold (`#d89d48`) is optional for the sun motif only. Keep the rest flat: no gradients, shadows, or 3D effects.
+- Draw simple black-ink figures with clear faces and plenty of negative space. Do not add helmets, crowns, capes, red clothing, or other accessories unless the story or user asks for them. Do not infer costumes from a historical name.
+- Keep scenes readable: at most 2 characters and 5 small icons. Make the main subject dominant; avoid captions and props overlapping. Use no more than 2 caption lines.
+- Make complex props recognizable. Draw a knot with distinct crossing loops, a tight center, and visible rope ends. Give a sword a clear grip, guard, and pointed blade. After a cut, leave a visible gap between the two rope ends.
+- When narration timings are available, make the red caption emphasis follow the currently spoken word throughout the narration. Use a `karaoke` interval for every whitespace-separated caption word; non-active words remain in the normal text colour.
+- Prefer asymmetrical layouts and leave deliberate negative space. Ground lines, suns, title cards, thought bubbles, and other motifs are optional; choose them only when they support the scene.
 
 ## Workflow
 
@@ -23,8 +33,6 @@ Read `references/style-guide.md` first for the visual rules (palette, proportion
 
 ## Hata mesajları ve doğrulama
 `render.py` storyboard'u çizmeden önce doğrular: bilinmeyen `type`/`pose`/`face`/`kind`/`font`, eksik zorunlu alan, aynı sahnede tekrarlanan `id`, `duration <= 0`, tek noktalı `lines` yolu, tek sayılı (çift olmayan) çözünürlük ve olmayan `carry` id'si **traceback yerine açık mesajla** reddedilir. Hiçbir zaman görünmeyecek ögeler (sahne bitişinden sonraki `at`) için uyarı verilir. Ses dosyası videodan kısaysa sonu sessizlikle doldurulur, uzunsa kesilir; video süresi **asla** değişmez.
-
-`scripts/render.py` üzerinde herhangi bir değişiklikten sonra `python scripts/selftest.py` çalıştır (21 kontrol, ffmpeg yoksa ses testleri atlanır).
 
 ## Storyboard schema
 
@@ -94,5 +102,4 @@ Sabit koordinat/şablon yok. Her videonun konusu farklı olduğu için yerleşim
 - Fonts: Poppins ve Playfair Display (veya Lora) kur ya da `--font-dir` ver. Hiç TrueType font bulunamazsa renderer **uyarı basar** ve Türkçe karakterler (İ ş ğ â) eksik çıkabilir; still'lerde kontrol et. Linux, macOS ve Windows font klasörleri taranır.
 - Keep the accent colour semantic (subject, keyword, negation). Don't add more colours.
 - When `karaoke` is present, the red caption emphasis follows the narration word by word using the supplied intervals. Do not leave a fixed red keyword on screen; render non-active words in the caption text colour.
-- Motion details in the style guide are inferred from stills; if the user supplies the real video, compare timing and update §5.
 
