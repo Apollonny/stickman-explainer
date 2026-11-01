@@ -2,6 +2,8 @@
 
 Codex skill for producing short, vertical stick-figure explainer videos from a storyboard and voice-over.
 
+![Stickman explainer reference frame](assets/readme-cover.png)
+
 ## Install
 
 Copy the `stickman-explainer/` folder into your Codex skills directory, usually `~/.codex/skills/`. See [SKILL.md](stickman-explainer/SKILL.md) for setup and rendering instructions.
