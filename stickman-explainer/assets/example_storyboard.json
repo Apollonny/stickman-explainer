@@ -1,0 +1,52 @@
+{
+  "meta": {"width": 1080, "height": 1920, "fps": 30, "boil_fps": 8, "transition": 0.18},
+  "scenes": [
+    {
+      "duration": 3.4,
+      "caption": "Büyük **İskender**'di.",
+      "elements": [
+        {"id": "ground", "type": "ground", "y": 1400, "x": 0.02, "x2": 0.98, "at": 0.0, "dur": 0.6, "anim": "wipe"},
+        {"id": "sun", "type": "sun", "x": 902, "y": 366, "r": 80, "at": 0.2, "dur": 0.8},
+        {"type": "text", "text": "İ SKENDER", "x": 0.5, "y": 407, "size": 128, "font": "serif", "tracking": 14, "rules": true, "at": 0.4, "dur": 0.6, "anim": "rise"},
+        {"type": "text", "text": "MAKEDONYA KRALI", "x": 0.5, "y": 570, "size": 30, "font": "sans_light", "tracking": 6, "color": "muted", "at": 0.9, "dur": 0.5},
+        {"id": "alex", "type": "figure", "x": 0.5, "ground": 1400, "h": 700, "head_r": 76, "face": "neutral", "accessory": "helmet", "cape": true, "at": 1.2, "dur": 0.5, "anim": "pop"}
+      ]
+    },
+    {
+      "duration": 3.6,
+      "caption": "**İskender** olmasaydım...",
+      "carry": [
+        "ground",
+        {"id": "sun", "set": {"x": 895, "y": 368, "r": 122}},
+        {"id": "alex", "set": {"x": 120, "head_r": 70, "face": "smile"}, "tween": {"at": 0.1, "dur": 0.9}}
+      ],
+      "elements": [
+        {"type": "thought", "x": 90, "y": 230, "w": 335, "h": 207, "tail_to": [112, 760], "at": 1.0, "dur": 0.6,
+         "inner": [
+           {"type": "figure", "x": 70, "ground": 175, "h": 150, "head_r": 16, "face": "neutral", "width": 6},
+           {"type": "prop", "kind": "barrel", "x": 140, "y": 95, "w": 120, "h": 80, "width": 4}
+         ]},
+        {"id": "barrel", "type": "prop", "kind": "barrel", "x": 800, "y": 1197, "w": 215, "h": 160, "at": 1.6, "dur": 0.4},
+        {"id": "diog", "type": "figure", "x": 770, "ground": 1400, "h": 343, "head_r": 58, "pose": "sit", "dir": -1, "face": "smile", "at": 1.8, "dur": 0.5, "anim": "pop"}
+      ]
+    },
+    {
+      "duration": 3.4,
+      "caption": "ve bir **kâse**ydi.",
+      "carry": [
+        "ground",
+        {"id": "diog", "set": {"x": 650}, "tween": {"at": 0.0, "dur": 0.7}},
+        {"id": "barrel", "set": {"x": 680}, "tween": {"at": 0.0, "dur": 0.7}},
+        {"id": "alex", "until": 0.1, "out_dur": 0.5},
+        {"id": "sun", "until": 0.1, "out_dur": 0.6}
+      ],
+      "elements": [
+        {"type": "prop", "kind": "house", "x": 120, "y": 440, "w": 150, "h": 130, "cross": true, "at": 0.5, "dur": 0.4},
+        {"type": "prop", "kind": "coins", "x": 335, "y": 440, "w": 150, "h": 130, "cross": true, "at": 1.0, "dur": 0.4},
+        {"type": "prop", "kind": "bucket", "x": 600, "y": 440, "w": 150, "h": 130, "at": 1.5, "dur": 0.4},
+        {"type": "prop", "kind": "bowl", "x": 810, "y": 460, "w": 160, "h": 70, "at": 2.0, "dur": 0.4}
+      ]
+    }
+  ]
+}
+
